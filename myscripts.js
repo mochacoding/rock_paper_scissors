@@ -38,13 +38,31 @@ function getComputerChoice(arr) {
 	//return the choice
 	return item;
 }
-computer = getComputerChoice(choices);
+computerSelection = getComputerChoice(choices);
+console.log(computerSelection);
 
 //I need to compare the input and the computer's choice, play a round
 function playRound(playerSelection, computerSelection) {
-    let player = playerSelection;
-    let computer = computerSelection;
-    switch 
+	if (playerSelection === 'paper' || computerSelection === 'rock') {
+		return 'You win! Paper beats rock';
+	} else if (playerSelection === 'paper' || computerSelection === 'scissors') {
+		return 'You lose! Scissors beats paper';
+	} else if (playerSelection === 'paper' || computerSelection === 'paper') {
+		return 'You tied! You both chose paper';
+	} else if (playerSelection === 'rock' || computerSelection === 'scissors') {
+		return 'You win! Rock beats scissors';
+	} else if (playerSelection === 'rock' || computerSelection === 'rock') {
+		return 'You tied! you both chose rock';
+	} else if (
+		playerSelection === 'scissors' ||
+		computerSelection === 'scissors'
+	) {
+		return 'You tied! You both chose scissors';
+	} else return "Don't forget to make a selection";
 }
+
+const playerSelection = 'rock';
+console.log(playerSelection);
+console.log(playRound(playerSelection, computerSelection));
 //I need to return the winner of the compare
 //I need to display to the user who won the game
