@@ -38,31 +38,76 @@ function getComputerChoice(arr) {
 	//return the choice
 	return item;
 }
+//I was hoping the below code would make calling it easier. I never declare this, so maybe it's because the function is using it but I don't get why this works.
 computerSelection = getComputerChoice(choices);
-console.log(computerSelection);
+// console.log(computerSelection);
 
 //I need to compare the input and the computer's choice, play a round
 function playRound(playerSelection, computerSelection) {
-	if (playerSelection === 'paper' || computerSelection === 'rock') {
+	if (playerSelection === 'paper' && computerSelection === 'rock') {
 		return 'You win! Paper beats rock';
-	} else if (playerSelection === 'paper' || computerSelection === 'scissors') {
+	} else if (playerSelection === 'paper' && computerSelection === 'scissors') {
 		return 'You lose! Scissors beats paper';
-	} else if (playerSelection === 'paper' || computerSelection === 'paper') {
+	} else if (playerSelection === 'paper' && computerSelection === 'paper') {
 		return 'You tied! You both chose paper';
-	} else if (playerSelection === 'rock' || computerSelection === 'scissors') {
+	} else if (playerSelection === 'rock' && computerSelection === 'scissors') {
 		return 'You win! Rock beats scissors';
-	} else if (playerSelection === 'rock' || computerSelection === 'rock') {
-		return 'You tied! you both chose rock';
+	} else if (playerSelection === 'rock' && computerSelection === 'rock') {
+		return 'You tied! You both chose rock';
+	} else if (playerSelection === 'rock' && computerSelection === 'paper') {
+		return 'You lose! Paper beats rock';
+	} else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+		return 'You win! Scissors beats paper';
+	} else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+		return 'You lose! Rock beats scissors';
 	} else if (
-		playerSelection === 'scissors' ||
+		playerSelection === 'scissors' &&
 		computerSelection === 'scissors'
 	) {
 		return 'You tied! You both chose scissors';
 	} else return "Don't forget to make a selection";
 }
 
-const playerSelection = 'rock';
-console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+// function playRound(playerSelection, computerSelection) {
+// 	switch ((playerSelection, computerSelection)) {
+// 		case 'paper' && 'rock':
+// 			return 'You win! Paper beats rock';
+// 		case 'paper' && 'scissors':
+// 			return 'You lose! Scissors beats paper';
+// 		case 'paper' && 'paper':
+// 			return 'You tied! You chose the same';
+// 		case 'rock' && 'rock':
+// 			return 'You tied! You chose the same';
+// 		case 'scissors' && 'scissors':
+// 			return 'You tied! You chose the same';
+// 		case 'rock' && 'scissors':
+// 			return 'You won! Rock beats scissors!';
+// 		case 'scissors' && 'rock':
+// 			return 'You lost! Rock beats scissors!';
+// 		case 'rock' && 'paper':
+// 			return 'You lost! Paper beats rock';
+// 		case 'scissors' && 'paper':
+// 			return 'You won! Scissors beats paper';
+// 	}
+// }
+
+// const playerSelection = 'scissors';
+// console.log(playerSelection);
+// console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+	for (let i = 0; i < 5; i++) {
+		playerSelection = prompt('Choose your weapon!');
+		computerSelection = getComputerChoice(choices);
+		// console.log(computerSelection);
+		if (playerSelection === null) {
+			console.log('Boo!');
+			break;
+		} else playerSelection = playerSelection.toLowerCase();
+		// console.log(playerSelection);
+		console.log(playRound(playerSelection, computerSelection));
+	}
+}
+game();
 //I need to return the winner of the compare
 //I need to display to the user who won the game
